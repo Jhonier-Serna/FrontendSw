@@ -1,1 +1,120 @@
-<p>create-event works!</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+      <div class="flex flex-col items-center mb-4">
+        <img
+          src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
+          alt="upload icon"
+          class="w-32 h-32 mb-2"
+        />
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+          Cambiar archivo
+        </button>
+      </div>
+      <form>
+        <div class="mb-4">
+          <label class="block text-zinc-700">Nombre del evento</label>
+          <input
+            type="text"
+            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+            placeholder="Cine al aire libre"
+          />
+        </div>
+        <div class="mb-4">
+          <select
+            id="category"
+            class="bg-zinc-700 border border--300 text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+          >
+            <option selected>categoría</option>
+            <option value="Teatro">Teatro</option>
+            <option value="Música">Música</option>
+          </select>
+        </div>
+        <div class="flex space-x-2 mb-4">
+          <div class="flex-1">
+            <label class="block text-zinc-700">Fecha inicio</label>
+            <div class="relative">
+              <input
+                type="date"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <label class="block text-zinc-700">Fecha fin</label>
+            <div class="relative">
+              <input
+                type="date"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-2 mb-4">
+          <div class="flex-1">
+            <label class="block text-zinc-700">Hora inicio</label>
+            <div class="relative">
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <label class="block text-zinc-700">Hora fin</label>
+            <div class="relative">
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-zinc-700">Lugar</label>
+          <input
+            type="text"
+            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+            placeholder="Parque de la mujer Manizales"
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-zinc-700">Encargado</label>
+          <input
+            type="text"
+            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+            placeholder="Casa de la cultura"
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-zinc-700">Descripción</label>
+          <textarea
+            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+            rows="3"
+            placeholder="Casa de la cultura"
+          ></textarea>
+        </div>
+        <div class="flex space-x-2">
+          <button
+            type="submit"
+            class="flex-1 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Guardar cambios
+          </button>
+          <button
+            type="button"
+            class="flex-1 bg-yellow-400 text-zinc-700 px-4 py-2 rounded-lg"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

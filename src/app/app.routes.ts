@@ -16,6 +16,11 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./module/security/security.module').then((m) => m.SecurityModule),
   },
+  {
+    path: 'parameters',
+    loadChildren: () =>
+      import('./module/parameters/parameters.module').then((m) => m.ParametersModule),
+  },
   //   {
   //     path: "**",
   //     component: PageNotFoundComponent,
