@@ -7,17 +7,17 @@
   </head>
   <body>
     <div class="max-w-md mx-auto bg-colorClaro rounded-xl shadow-lg p-6">
-      <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
-        <img
-          src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
-          alt="upload icon"
-          class="w-20 h-20 mb-2"
-        />
-        <button class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg">
-          Subir archivo
-        </button>
-      </div>
-      <form>
+      <form [formGroup]="fGroup">
+        <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
+          <img
+            src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
+            alt="upload icon"
+            class="w-20 h-20 mb-2"
+          />
+          <button class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg">
+            Subir archivo
+          </button>
+        </div>
         <div class="mb-4">
           <label class="block text-colorOscuro">Nombre del evento</label>
           <div
@@ -27,7 +27,18 @@
               type="text"
               class="w-full mt-1 p-2 border rounded-lg bg-colorOscuro"
               placeholder="Cine al aire libre"
+              formControlName="eventName"
             />
+            <div
+              class="text-primerComplementario"
+              *ngIf="
+                getformGroup['eventName'].errors &&
+                (getformGroup['eventName'].dirty ||
+                  getformGroup['eventName'].touched)
+              "
+            >
+              <strong>Este campo es obligatorio</strong>
+            </div>
           </div>
         </div>
         <div class="mb-4">
@@ -50,7 +61,17 @@
                 <input
                   type="date"
                   class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                  formControlName="date"
                 />
+                <div
+                  class="text-primerComplementario"
+                  *ngIf="
+                    getformGroup['date'].errors &&
+                    (getformGroup['date'].dirty || getformGroup['date'].touched)
+                  "
+                >
+                  <strong>Este campo es obligatorio</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -63,7 +84,18 @@
                 <input
                   type="number"
                   class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                  formControlName="places"
                 />
+                <div
+                  class="text-primerComplementario"
+                  *ngIf="
+                    getformGroup['places'].errors &&
+                    (getformGroup['places'].dirty ||
+                      getformGroup['places'].touched)
+                  "
+                >
+                  <strong>Este campo es obligatorio</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -78,7 +110,18 @@
                 <input
                   type="time"
                   class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                  formControlName="startTime"
                 />
+                <div
+                  class="text-primerComplementario"
+                  *ngIf="
+                    getformGroup['startTime'].errors &&
+                    (getformGroup['startTime'].dirty ||
+                      getformGroup['startTime'].touched)
+                  "
+                >
+                  <strong>Este campo es obligatorio</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -91,7 +134,18 @@
                 <input
                   type="time"
                   class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                  formControlName="endTime"
                 />
+                <div
+                  class="text-primerComplementario"
+                  *ngIf="
+                    getformGroup['endTime'].errors &&
+                    (getformGroup['endTime'].dirty ||
+                      getformGroup['endTime'].touched)
+                  "
+                >
+                  <strong>Este campo es obligatorio</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -105,7 +159,17 @@
               type="text"
               class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
               placeholder="Parque de la mujer Manizales"
+              formControlName="place"
             />
+            <div
+              class="text-primerComplementario"
+              *ngIf="
+                getformGroup['place'].errors &&
+                (getformGroup['place'].dirty || getformGroup['place'].touched)
+              "
+            >
+              <strong>Este campo es obligatorio</strong>
+            </div>
           </div>
         </div>
         <div class="mb-4">
@@ -115,9 +179,20 @@
           >
             <input
               type="text"
-              class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              class="w-full mt-1 p-2 border rounded-lg"
               placeholder="Casa de la cultura"
+              formControlName="entityInCharge"
             />
+            <div
+              class="text-primerComplementario"
+              *ngIf="
+                getformGroup['entityInCharge'].errors &&
+                (getformGroup['entityInCharge'].dirty ||
+                  getformGroup['entityInCharge'].touched)
+              "
+            >
+              <strong>Este campo es obligatorio</strong>
+            </div>
           </div>
         </div>
         <div class="mb-4">
@@ -126,15 +201,27 @@
             class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
           >
             <textarea
-              class="w-full mt-1 p-2"
+              class="w-full mt-1 p-2 focus:border-segundoComplementario outline-none focus:ring-segundoComplementario"
               rows="3"
               placeholder="Casa de la cultura"
+              formControlName="description"
             ></textarea>
+            <div
+              class="text-primerComplementario"
+              *ngIf="
+                getformGroup['description'].errors &&
+                (getformGroup['description'].dirty ||
+                  getformGroup['description'].touched)
+              "
+            >
+              <strong>Este campo es obligatorio</strong>
+            </div>
           </div>
         </div>
         <div class="flex space-x-2">
           <button
             type="submit"
+            (click)="saveEvent()"
             class="flex-1 bg-pincipal text-colorClaro px-4 py-2 rounded-lg"
           >
             Guardar cambios
