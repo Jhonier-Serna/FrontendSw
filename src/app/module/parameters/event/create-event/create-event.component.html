@@ -6,30 +6,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-      <div class="flex flex-col items-center mb-4">
+    <div class="max-w-md mx-auto bg-colorClaro rounded-xl shadow-lg p-6">
+      <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
         <img
           src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
           alt="upload icon"
-          class="w-32 h-32 mb-2"
+          class="w-20 h-20 mb-2"
         />
-        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">
-          Cambiar archivo
+        <button class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg">
+          Subir archivo
         </button>
       </div>
       <form>
         <div class="mb-4">
-          <label class="block text-zinc-700">Nombre del evento</label>
-          <input
-            type="text"
-            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-            placeholder="Cine al aire libre"
-          />
+          <label class="block text-colorOscuro">Nombre del evento</label>
+          <div
+            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+          >
+            <input
+              type="text"
+              class="w-full mt-1 p-2 border rounded-lg bg-colorOscuro"
+              placeholder="Cine al aire libre"
+            />
+          </div>
         </div>
         <div class="mb-4">
           <select
             id="category"
-            class="bg-zinc-700 border border--300 text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+            class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
           >
             <option selected>categoría</option>
             <option value="Teatro">Teatro</option>
@@ -38,78 +42,106 @@
         </div>
         <div class="flex space-x-2 mb-4">
           <div class="flex-1">
-            <label class="block text-zinc-700">Fecha inicio</label>
+            <label class="block text-colorOscuro">Fecha inicio</label>
             <div class="relative">
-              <input
-                type="date"
-                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-              />
+              <div
+                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+              >
+                <input
+                  type="date"
+                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                />
+              </div>
             </div>
           </div>
           <div class="flex-1">
-            <label class="block text-zinc-700">Fecha fin</label>
+            <label class="block text-colorOscuro">Numero de Plazas</label>
             <div class="relative">
-              <input
-                type="date"
-                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-              />
+              <div
+                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+              >
+                <input
+                  type="number"
+                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                />
+              </div>
             </div>
           </div>
         </div>
         <div class="flex space-x-2 mb-4">
           <div class="flex-1">
-            <label class="block text-zinc-700">Hora inicio</label>
+            <label class="block text-colorOscuro">Hora inicio</label>
             <div class="relative">
-              <input
-                type="time"
-                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-              />
+              <div
+                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+              >
+                <input
+                  type="time"
+                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                />
+              </div>
             </div>
           </div>
           <div class="flex-1">
-            <label class="block text-zinc-700">Hora fin</label>
+            <label class="block text-colorOscuro">Hora fin</label>
             <div class="relative">
-              <input
-                type="time"
-                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-              />
+              <div
+                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+              >
+                <input
+                  type="time"
+                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                />
+              </div>
             </div>
           </div>
         </div>
         <div class="mb-4">
-          <label class="block text-zinc-700">Lugar</label>
-          <input
-            type="text"
-            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-            placeholder="Parque de la mujer Manizales"
-          />
+          <label class="block text-colorOscuro">Lugar</label>
+          <div
+            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+          >
+            <input
+              type="text"
+              class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              placeholder="Parque de la mujer Manizales"
+            />
+          </div>
         </div>
         <div class="mb-4">
-          <label class="block text-zinc-700">Encargado</label>
-          <input
-            type="text"
-            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-            placeholder="Casa de la cultura"
-          />
+          <label class="block text-colorOscuro">Encargado</label>
+          <div
+            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+          >
+            <input
+              type="text"
+              class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+              placeholder="Casa de la cultura"
+            />
+          </div>
         </div>
         <div class="mb-4">
-          <label class="block text-zinc-700">Descripción</label>
-          <textarea
-            class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-            rows="3"
-            placeholder="Casa de la cultura"
-          ></textarea>
+          <label class="block text-colorOscuro">Descripción</label>
+          <div
+            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+          >
+            <textarea
+              class="w-full mt-1 p-2"
+              rows="3"
+              placeholder="Casa de la cultura"
+            ></textarea>
+          </div>
         </div>
         <div class="flex space-x-2">
           <button
             type="submit"
-            class="flex-1 bg-blue-500 text-white px-4 py-2 rounded-lg"
+            class="flex-1 bg-pincipal text-colorClaro px-4 py-2 rounded-lg"
           >
             Guardar cambios
           </button>
           <button
             type="button"
-            class="flex-1 bg-yellow-400 text-zinc-700 px-4 py-2 rounded-lg"
+            class="flex-1 bg-primerComplementario text-colorOscuro px-4 py-2 rounded-lg"
           >
             Cancelar
           </button>
