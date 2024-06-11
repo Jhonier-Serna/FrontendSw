@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontentSw": {
+    "frontendsw": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "FrontentSw:build:production"
+              "buildTarget": "frontendsw:build:production"
             },
             "development": {
-              "buildTarget": "FrontentSw:build:development"
+              "buildTarget": "frontendsw:build:development"
             }
           },
           "defaultConfiguration": "development"

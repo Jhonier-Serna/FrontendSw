@@ -6,7 +6,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="max-w-md mx-auto bg-colorClaro rounded-xl shadow-lg p-6">
+    <div
+      class="w-full max-w-6xl mx-auto bg-colorClaro rounded-xl shadow-lg p-6"
+    >
       <form [formGroup]="fGroup">
         <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
           <input
@@ -23,204 +25,195 @@
               alt="upload icon"
               class="w-20 h-20 mb-2"
             />
-            <button
-              type="button"
-              class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg"
-            >
-              Subir archivos
-            </button>
           </label>
         </div>
-        <div class="grid grid-cols-3 gap-2 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
           <div *ngFor="let file of selectedFiles" class="relative">
             <img
               *ngIf="file.type.startsWith('image/')"
               [src]="file.preview"
-              class="w-20 h-20 object-cover"
+              class="w-full h-32 object-cover"
             />
             <video
               *ngIf="file.type.startsWith('video/')"
-              class="w-20 h-20 object-cover"
+              class="w-full h-32 object-cover"
               controls
             >
               <source [src]="file.preview" />
             </video>
           </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-colorOscuro">Nombre del evento</label>
-          <div
-            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
-          >
-            <input
-              type="text"
-              class="w-full mt-1 p-2 rounded-lg bg-colorOscuro"
-              placeholder="Cine al aire libre"
-              formControlName="eventName"
-            />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Nombre del evento</label>
             <div
-              class="text-primerComplementario"
-              *ngIf="
-                getformGroup['eventName'].errors &&
-                (getformGroup['eventName'].dirty ||
-                  getformGroup['eventName'].touched)
-              "
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
             >
-              <strong>Este campo es obligatorio</strong>
+              <input
+                type="text"
+                class="w-full mt-1 p-2 rounded-lg bg-colorOscuro"
+                placeholder="Cine al aire libre"
+                formControlName="eventName"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['eventName'].errors &&
+                  (getformGroup['eventName'].dirty ||
+                    getformGroup['eventName'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
             </div>
           </div>
+          <div>
+            <label class="block text-colorOscuro">Categoría</label>
+            <select
+              id="category"
+              class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+            >
+              <option selected>categoría</option>
+              <option value="Teatro">Teatro</option>
+              <option value="Música">Música</option>
+            </select>
+          </div>
         </div>
-        <div class="mb-4">
-          <select
-            id="category"
-            class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
-          >
-            <option selected>categoría</option>
-            <option value="Teatro">Teatro</option>
-            <option value="Música">Música</option>
-          </select>
-        </div>
-        <div class="flex space-x-2 mb-4">
-          <div class="flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
             <label class="block text-colorOscuro">Fecha inicio</label>
-            <div class="relative">
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="date"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="date"
+              />
               <div
-                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['date'].errors &&
+                  (getformGroup['date'].dirty || getformGroup['date'].touched)
+                "
               >
-                <input
-                  type="date"
-                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-                  formControlName="date"
-                />
-                <div
-                  class="text-primerComplementario"
-                  *ngIf="
-                    getformGroup['date'].errors &&
-                    (getformGroup['date'].dirty || getformGroup['date'].touched)
-                  "
-                >
-                  <strong>Este campo es obligatorio</strong>
-                </div>
+                <strong>Este campo es obligatorio</strong>
               </div>
             </div>
           </div>
-          <div class="flex-1">
+          <div>
             <label class="block text-colorOscuro">Numero de Plazas</label>
-            <div class="relative">
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="number"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="places"
+              />
               <div
-                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['places'].errors &&
+                  (getformGroup['places'].dirty ||
+                    getformGroup['places'].touched)
+                "
               >
-                <input
-                  type="number"
-                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-                  formControlName="places"
-                />
-                <div
-                  class="text-primerComplementario"
-                  *ngIf="
-                    getformGroup['places'].errors &&
-                    (getformGroup['places'].dirty ||
-                      getformGroup['places'].touched)
-                  "
-                >
-                  <strong>Este campo es obligatorio</strong>
-                </div>
+                <strong>Este campo es obligatorio</strong>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex space-x-2 mb-4">
-          <div class="flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
             <label class="block text-colorOscuro">Hora inicio</label>
-            <div class="relative">
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="startTime"
+              />
               <div
-                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['startTime'].errors &&
+                  (getformGroup['startTime'].dirty ||
+                    getformGroup['startTime'].touched)
+                "
               >
-                <input
-                  type="time"
-                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-                  formControlName="startTime"
-                />
-                <div
-                  class="text-primerComplementario"
-                  *ngIf="
-                    getformGroup['startTime'].errors &&
-                    (getformGroup['startTime'].dirty ||
-                      getformGroup['startTime'].touched)
-                  "
-                >
-                  <strong>Este campo es obligatorio</strong>
-                </div>
+                <strong>Este campo es obligatorio</strong>
               </div>
             </div>
           </div>
-          <div class="flex-1">
+          <div>
             <label class="block text-colorOscuro">Hora fin</label>
-            <div class="relative">
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="endTime"
+              />
               <div
-                class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['endTime'].errors &&
+                  (getformGroup['endTime'].dirty ||
+                    getformGroup['endTime'].touched)
+                "
               >
-                <input
-                  type="time"
-                  class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-                  formControlName="endTime"
-                />
-                <div
-                  class="text-primerComplementario"
-                  *ngIf="
-                    getformGroup['endTime'].errors &&
-                    (getformGroup['endTime'].dirty ||
-                      getformGroup['endTime'].touched)
-                  "
-                >
-                  <strong>Este campo es obligatorio</strong>
-                </div>
+                <strong>Este campo es obligatorio</strong>
               </div>
             </div>
           </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-colorOscuro">Lugar</label>
-          <div
-            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
-          >
-            <input
-              type="text"
-              class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
-              placeholder="Parque de la mujer Manizales"
-              formControlName="place"
-            />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Lugar</label>
             <div
-              class="text-primerComplementario"
-              *ngIf="
-                getformGroup['place'].errors &&
-                (getformGroup['place'].dirty || getformGroup['place'].touched)
-              "
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
             >
-              <strong>Este campo es obligatorio</strong>
+              <input
+                type="text"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                placeholder="Parque de la mujer Manizales"
+                formControlName="place"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['place'].errors &&
+                  (getformGroup['place'].dirty || getformGroup['place'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="mb-4">
-          <label class="block text-colorOscuro">Encargado</label>
-          <div
-            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
-          >
-            <input
-              type="text"
-              class="w-full mt-1 p-2 border rounded-lg"
-              placeholder="Casa de la cultura"
-              formControlName="entityInCharge"
-            />
+          <div>
+            <label class="block text-colorOscuro">Encargado</label>
             <div
-              class="text-primerComplementario"
-              *ngIf="
-                getformGroup['entityInCharge'].errors &&
-                (getformGroup['entityInCharge'].dirty ||
-                  getformGroup['entityInCharge'].touched)
-              "
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
             >
-              <strong>Este campo es obligatorio</strong>
+              <input
+                type="text"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                placeholder="Casa de la cultura"
+                formControlName="entityInCharge"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['entityInCharge'].errors &&
+                  (getformGroup['entityInCharge'].dirty ||
+                    getformGroup['entityInCharge'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -230,7 +223,7 @@
             class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
           >
             <textarea
-              class="w-full mt-1 p-2 focus:border-segundoComplementario outline-none focus:ring-segundoComplementario"
+              class="w-full mt-1 p-2 focus:border-segundoComplementario outline-none focus:ring-segundoComplementario resize-none"
               rows="3"
               placeholder="Casa de la cultura"
               formControlName="description"
