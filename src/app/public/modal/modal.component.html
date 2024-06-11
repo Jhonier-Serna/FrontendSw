@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-icon">
+    <div class="image">
+      <img [src]="data.imageSrc" alt="Icon" class="icon-image" />
+    </div>
+  </div>
+  <div class="modal-message">
+    <h6>{{ data.message }}</h6>
+  </div>
+  <div class="modal-footer">
+    <button mat-button mat-raised-button color="primary" (click)="close()">
+      {{ data.message2 }}
+    </button>
+  </div>
+</div>
