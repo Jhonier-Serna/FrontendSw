@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --colorOscuro: #000814;
+  --colorClaro: #f1f5f9;
+  --pincipal: #00afb9;
+  --primerComplementario: #f07167;
+  --segundoComplementario: #3da9fc;
+}
+
+.bg-colorOscuro {
+  background-color: var(--colorOscuro);
+}
+
+.bg-colorClaro {
+  background-color: var(--colorClaro);
+}
+
+.bg-pincipal {
+  background-color: var(--pincipal);
+}
+
+.bg-primerComplementario {
+  background-color: var(--primerComplementario);
+}
+
+.bg-segundoComplementario {
+  background-color: var(--segundoComplementario);
+}
+
+.text-colorOscuro {
+  color: var(--colorOscuro);
+}
+
+.text-colorClaro {
+  color: var(--colorClaro);
+}
+
+.text-pincipal {
+  color: var(--pincipal);
+}
+
+.text-primerComplementario {
+  color: var(--primerComplementario);
+}
+
+.text-segundoComplementario {
+  color: var(--segundoComplementario);
+}

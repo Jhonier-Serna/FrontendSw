@@ -9,14 +9,43 @@
     <div class="max-w-md mx-auto bg-colorClaro rounded-xl shadow-lg p-6">
       <form [formGroup]="fGroup">
         <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
-          <img
-            src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
-            alt="upload icon"
-            class="w-20 h-20 mb-2"
+          <input
+            type="file"
+            (change)="onFileSelected($event)"
+            multiple
+            accept="image/*,video/*"
+            class="hidden"
+            id="fileInput"
           />
-          <button class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg">
-            Subir archivo
-          </button>
+          <label for="fileInput" class="cursor-pointer">
+            <img
+              src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
+              alt="upload icon"
+              class="w-20 h-20 mb-2"
+            />
+            <button
+              type="button"
+              class="bg-pincipal text-colorClaro px-4 py-2 rounded-lg"
+            >
+              Subir archivos
+            </button>
+          </label>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mb-4">
+          <div *ngFor="let file of selectedFiles" class="relative">
+            <img
+              *ngIf="file.type.startsWith('image/')"
+              [src]="file.preview"
+              class="w-20 h-20 object-cover"
+            />
+            <video
+              *ngIf="file.type.startsWith('video/')"
+              class="w-20 h-20 object-cover"
+              controls
+            >
+              <source [src]="file.preview" />
+            </video>
+          </div>
         </div>
         <div class="mb-4">
           <label class="block text-colorOscuro">Nombre del evento</label>
@@ -25,7 +54,7 @@
           >
             <input
               type="text"
-              class="w-full mt-1 p-2 border rounded-lg bg-colorOscuro"
+              class="w-full mt-1 p-2 rounded-lg bg-colorOscuro"
               placeholder="Cine al aire libre"
               formControlName="eventName"
             />
