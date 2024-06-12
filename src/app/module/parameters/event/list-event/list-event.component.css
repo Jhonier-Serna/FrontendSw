@@ -1,0 +1,51 @@
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #f1ece7;
+  margin: auto;
+  width: 100%;
+}
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+.chip {
+  display: flex;
+  height: 30px;
+  width: auto;
+  font-size: 12px;
+  border-radius: 16px;
+  background-color: #f2aa1f;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.card-action {
+  text-align: center;
+}
+.btn {
+  background-color: #114358;
+  color: white;
+  border-radius: 5px;
+}
+.flex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flex-item {
+  flex: 1 1 45%;
+  box-sizing: border-box;
+  margin: 5px;
+}
+.card-reveal img,
+p {
+  margin-top: 20px;
+}

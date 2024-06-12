@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,26 +8,27 @@
         <div *ngFor="let e of eventList; let i = index" class="col s12 m6 l4">
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img
-                class="activator"
-                src="https://materializecss.com/images/sample-1.jpg"
-              />
+              <img class="activator" src="{{ e.archivos[0] }}" />
             </div>
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                {{ e.name }}
-                <i class="material-icons right">more_vert</i>
-              </span>
-              <p><a href="#">This is a link</a></p>
+              <span class="card-title">{{ e.name }}</span>
+              <div class="chip flex-item">Fecha:{{ e.fecha }}</div>
+              <div class="chip flex-item">Lugar:{{ e.lugar }}</div>
+              <div class="flex">
+                <div class="chip flex-item">Hora inicio: {{ e.HInicio }}</div>
+                <div class="chip flex-item">Hora fin: {{ e.HFin }}</div>
+              </div>
+              <div class="flex">
+                <div class="chip flex-item">Disponibles: {{ e.plazas }}</div>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="btn">Inscribirse</a>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">
-                <i class="material-icons right">close</i>Card Title
+                <i class="small material-icons">do_disturb</i>
               </span>
-              <p>
-                Here is some more information about this product that is only
-                revealed once clicked on.
-              </p>
               <div class="card-tabs">
                 <ul
                   [attr.id]="'tabs-swipe-demo-' + i"
@@ -41,17 +41,18 @@
                     <a [attr.href]="'#test-swipe-2-' + i">📷</a>
                   </li>
                   <li class="tab col s4">
-                    <a [attr.href]="'#test-swipe-3-' + i">📷</a>
+                    <a [attr.href]="'#test-swipe-3-' + i">📚</a>
                   </li>
                 </ul>
-                <div [attr.id]="'test-swipe-1-' + i" class="col s12 blue">
-                  Test 1
+                <div [attr.id]="'test-swipe-1-' + i" class="col s12">
+                  <img src="{{ e.archivos[1] }}" alt="" />
                 </div>
-                <div [attr.id]="'test-swipe-2-' + i" class="col s12 red">
-                  Test 2
+                <div [attr.id]="'test-swipe-2-' + i" class="col s12">
+                  <img src="{{ e.archivos[2] }}" alt="" />
+                  <video src="{{ e.archivos[2] }}" controls></video>
                 </div>
-                <div [attr.id]="'test-swipe-3-' + i" class="col s12 green">
-                  Test 3
+                <div [attr.id]="'test-swipe-3-' + i" class="col s12">
+                  <p>{{ e.descripcion }}</p>
                 </div>
               </div>
             </div>
@@ -59,5 +60,6 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
