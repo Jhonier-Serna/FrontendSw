@@ -5,6 +5,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { TwoFaIdentificationComponent } from './two-fa-identification/two-fa-identification.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
+import { EventsTableComponent } from './events/events-table/events-table.component';
 
 const routes: Routes = [
   {
@@ -20,12 +21,16 @@ const routes: Routes = [
     component: TwoFaIdentificationComponent,
   },
   {
-    path:'forgot-password',
-    component: ForgotPasswordComponent ,
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
   {
-    path:'register',
-    component: RegisterComponent ,
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'eventsTable',
+    component: EventsTableComponent,
   },
 ];
 
