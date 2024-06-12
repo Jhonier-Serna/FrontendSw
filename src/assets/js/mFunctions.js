@@ -3,8 +3,7 @@ function startSideMenu() {
     var elems = document.querySelectorAll(".sidenav");
     var instances = M.Sidenav.init(elems);
 
-    // Manejador de eventos para el botón de cerrar menú
-    var closeButton = document.querySelector(".close-menu a");
+    var closeButton = document.querySelector('.close-menu a');
     if (closeButton) {
       closeButton.addEventListener("click", function () {
         var sidenavInstance = M.Sidenav.getInstance(
@@ -17,29 +16,15 @@ function startSideMenu() {
 }
 startSideMenu();
 
-function carouselF() {
-  document.addEventListener("DOMContentLoaded", function () {
-    var elems = document.querySelectorAll(".carousel");
-    var instances = M.Carousel.init(elems, options);
-  });
+function handleSubmit(event) {
+  event.preventDefault();
+  var email = document.getElementById('email').value;
+  if (email) {
+      alert('Correo enviado');
+      window.location.href = '/security/user-identification';
+  } else {
+      alert('Por favor, ingrese un correo electrónico válido');
+  }
 }
 
-carouselF();
-
-function login() {
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("container");
-    const switchToSignIn = document.getElementById("switchToSignIn");
-    const switchToLogin = document.getElementById("switchToLogin");
-
-    switchToSignIn.addEventListener("click", () => {
-      container.classList.add("sign-up-active");
-    });
-
-    switchToLogin.addEventListener("click", () => {
-      container.classList.remove("sign-up-active");
-    });
-  });
-}
-
-login();
+handleSubmit();

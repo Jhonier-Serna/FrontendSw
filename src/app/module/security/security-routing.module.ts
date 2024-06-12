@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserIdentificationComponent } from './user-identification/user-identification.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { TwoFaIdentificationComponent } from './two-fa-identification/two-fa-identification.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'two-fa-identification',
     component: TwoFaIdentificationComponent,
+  },
+  {
+    path:'forgot-password',
+    component: ForgotPasswordComponent ,
   },
 ];
 
