@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ModalComponent } from '../../../../public/modal/modal.component';
 import {
   FormBuilder,
@@ -16,8 +17,6 @@ import {
   getDownloadURL,
   UploadTaskSnapshot,
 } from '@angular/fire/storage';
-import { forkJoin, Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
 interface SelectedFile {
   file: File;

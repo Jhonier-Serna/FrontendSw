@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-identification',
@@ -19,12 +20,14 @@ fGroup: FormGroup = new FormGroup({});
 
 constructor(
   private fb: FormBuilder,
+  private router: Router
 
 ){
 
 }
 ngOnInit(){
   this.buildForm();
+   //this.router.navigate('/security/user-identification')
 }
 
 buildForm(){

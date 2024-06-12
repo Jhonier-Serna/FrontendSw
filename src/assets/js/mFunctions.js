@@ -2,8 +2,7 @@ function startSideMenu() {
   document.addEventListener("DOMContentLoaded", function () {
     var elems = document.querySelectorAll(".sidenav");
     var instances = M.Sidenav.init(elems);
-
-    var closeButton = document.querySelector('.close-menu a');
+    var closeButton = document.querySelector(".close-menu a");
     if (closeButton) {
       closeButton.addEventListener("click", function () {
         var sidenavInstance = M.Sidenav.getInstance(
@@ -18,13 +17,16 @@ startSideMenu();
 
 function handleSubmit(event) {
   event.preventDefault();
-  var email = document.getElementById('email').value;
+  var email = document.getElementById("email").value;
   if (email) {
-      alert('Correo enviado');
-      window.location.href = '/security/user-identification';
+    alert("Correo enviado");
+    window.location.href = "/security/user-identification";
   } else {
-      alert('Por favor, ingrese un correo electrónico válido');
+    alert("Por favor, ingrese un correo electrónico válido");
   }
 }
 
-handleSubmit();
+document.addEventListener("DOMContentLoaded", function () {
+  var carousel = document.querySelectorAll(".carousel");
+  M.Carousel.init(carousel);
+});
