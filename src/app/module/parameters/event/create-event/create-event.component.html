@@ -30,11 +30,20 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4 overflow-y-auto max-h-20"
         >
-          <div *ngFor="let file of selectedFiles" class="relative">
+          <div
+            *ngFor="let file of selectedFiles; let i = index"
+            class="relative"
+          >
+            <button
+              class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
+              (click)="deleteFile(i)"
+            >
+              X
+            </button>
             <img
               *ngIf="file.type.startsWith('image/')"
               [src]="file.preview"
-              class="w-full h-20 object-cover"
+              class="w-20 h-20 object-cover"
             />
             <video
               *ngIf="file.type.startsWith('video/')"

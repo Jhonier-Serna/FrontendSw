@@ -105,6 +105,10 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
+  deleteFile(index: number) {
+    this.selectedFiles.splice(index, 1);
+  }
+
   uploadFiles(): Observable<string[]> {
     const uploadObservables = this.selectedFiles.map((selectedFile) =>
       this.uploadFile(selectedFile.file).pipe(catchError(() => of('')))
