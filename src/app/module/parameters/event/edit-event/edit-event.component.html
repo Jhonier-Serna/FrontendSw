@@ -1,1 +1,281 @@
-<p>edit-event works!</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div
+      class="w-full max-w-6xl mx-auto bg-colorClaro rounded-xl shadow-lg p-6"
+    >
+      <form [formGroup]="fGroup">
+        <div class="flex flex-col items-center mb-4 bg-segundoComplementario">
+          <input
+            type="file"
+            (change)="onFileSelected($event)"
+            multiple
+            accept="image/*,video/*"
+            class="hidden"
+            id="fileInput"
+          />
+          <label for="fileInput" class="cursor-pointer">
+            <img
+              src="https://uc0ecb088d6c741a669a82b83bdb.previews.dropboxusercontent.com/p/thumb/ACTR4q5egSv3DYi7HHlXoIYFqb_ANTukzIqux-zsOwiUrC8FIDGDgv4jNj6HMe_7LIuWkwqwKtGMz_E0mlJlCja0u_JY0mjQYEW3Sgt7852fYFw_NHOMj7DEFjCM99zqC942B70KS9eu1viXNven7vobJZ2gdYSpb-OyXK3p8AAlewwkEKx7pBxK5OTAWDoDNOLWGWPSXd-5QFde-wWdu1rQ7l_H_npEKBq9_Zjbru7iA2QY1RCpafzC3rLX65ePSW2QfyF-vA625NDK8pLDW_kqYSERu760t9KkPygjftSTpIbTIuRBB60J9iANAWG9M-IJHrXNt6U3yLrcxMLRjhTALN1jCLar_FLhpfjI_or_nMB83gZ3GBtMwD4rF98Mrgo/p.png"
+              alt="upload icon"
+              class="w-20 h-20 mb-2"
+            />
+          </label>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4 overflow-y-auto max-h-20"
+        >
+          <div
+            *ngFor="let file of selectedFiles; let i = index"
+            class="relative"
+          >
+            <button
+              class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
+              (click)="deleteFile(i)"
+            >
+              X
+            </button>
+            <img
+              *ngIf="file.type.startsWith('image/')"
+              [src]="file.preview"
+              class="w-20 h-20 object-cover"
+            />
+            <video
+              *ngIf="file.type.startsWith('video/')"
+              class="w-full h-32 object-cover"
+              controls
+            >
+              <source [src]="file.preview" />
+            </video>
+          </div>
+          <div
+            *ngFor="let archivo of event.archivos; let i = index"
+            class="relative"
+          >
+            <button
+              class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
+              (click)="deleteFile(i)"
+            >
+              X
+            </button>
+            <img [src]="archivo" class="w-20 h-20 object-cover" />
+            <source [src]="archivo" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Nombre del evento</label>
+            <div
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="text"
+                class="w-full mt-1 p-2 rounded-lg bg-colorOscuro"
+                formControlName="eventName"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['eventName'].errors &&
+                  (getformGroup['eventName'].dirty ||
+                    getformGroup['eventName'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-colorOscuro">Categoría</label>
+            <select
+              id="category"
+              class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+              formControlName="category"
+            >
+              <option value="Teatro">Teatro</option>
+              <option value="Música">Música</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Fecha inicio</label>
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="date"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="date"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['date'].errors &&
+                  (getformGroup['date'].dirty || getformGroup['date'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-colorOscuro">Numero de Plazas</label>
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="number"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="places"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['places'].errors &&
+                  (getformGroup['places'].dirty ||
+                    getformGroup['places'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Hora inicio</label>
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="startTime"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['startTime'].errors &&
+                  (getformGroup['startTime'].dirty ||
+                    getformGroup['startTime'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-colorOscuro">Hora fin</label>
+            <div
+              class="relative bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="time"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="endTime"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['endTime'].errors &&
+                  (getformGroup['endTime'].dirty ||
+                    getformGroup['endTime'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-colorOscuro">Lugar</label>
+            <div
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="text"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="place"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['place'].errors &&
+                  (getformGroup['place'].dirty || getformGroup['place'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-colorOscuro">Encargado</label>
+            <div
+              class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+            >
+              <input
+                type="text"
+                class="w-full mt-1 p-2 border rounded-lg bg-zinc-100"
+                formControlName="entityInCharge"
+              />
+              <div
+                class="text-primerComplementario"
+                *ngIf="
+                  getformGroup['entityInCharge'].errors &&
+                  (getformGroup['entityInCharge'].dirty ||
+                    getformGroup['entityInCharge'].touched)
+                "
+              >
+                <strong>Este campo es obligatorio</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-colorOscuro">Descripción</label>
+          <div
+            class="bg-segundoComplementario border rounded-xl border-segundoComplementario"
+          >
+            <textarea
+              class="w-full mt-1 p-2 focus:border-segundoComplementario outline-none focus:ring-segundoComplementario resize-none"
+              rows="3"
+              formControlName="description"
+            ></textarea>
+            <div
+              class="text-primerComplementario"
+              *ngIf="
+                getformGroup['description'].errors &&
+                (getformGroup['description'].dirty ||
+                  getformGroup['description'].touched)
+              "
+            >
+              <strong>Este campo es obligatorio</strong>
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-2">
+          <button
+            type="submit"
+            (click)="saveEvent()"
+            class="flex-1 bg-pincipal text-colorClaro px-4 py-2 rounded-lg"
+          >
+            Guardar cambios
+          </button>
+          <button
+            type="button"
+            class="flex-1 bg-primerComplementario text-colorOscuro px-4 py-2 rounded-lg"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
