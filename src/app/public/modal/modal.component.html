@@ -8,8 +8,10 @@
     <h6>{{ data.message }}</h6>
   </div>
   <div class="modal-footer">
-    <button mat-button mat-raised-button color="primary" (click)="close()">
-      {{ data.message2 }}
-    </button>
+    <div class="chip flex-item">
+      <a (click)="close()" class="chip flex-item" class="btn">{{
+        data.message2
+      }}</a>
+    </div>
   </div>
 </div>

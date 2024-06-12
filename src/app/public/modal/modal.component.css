@@ -1,29 +1,38 @@
 .modal-content {
   text-align: center;
-  /* padding: 20px; */
+  overflow: hidden;
 }
 
 .modal-icon {
   background: #114358;
   width: 300px;
   height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-image {
   width: 100px;
   height: 100px;
-  margin-left: 100px;
 }
 
 .modal-message {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 .modal-footer button {
   background-color: #f2aa1f;
-  margin-bottom: 50px;
   border-radius: 30%;
   width: 100px;
   height: 40px;
+}
+.chip a {
+  display: flex;
+  height: 30px;
+  width: auto;
+  border-radius: 16px;
+  background-color: #f2aa1f;
+  justify-content: center;
 }
