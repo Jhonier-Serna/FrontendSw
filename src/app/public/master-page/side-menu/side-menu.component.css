@@ -1,0 +1,44 @@
+.sidenav {
+  background-color: #F1ECE7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidenav .close-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 48px;
+}
+
+.sidenav .user-view {
+  background-color: #F1ECE7;
+}
+
+.sidenav .user-view .name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidenav .user-view .email {
+  font-size: 14px;
+}
+
+.sidenav .menu-items {
+  flex-grow: 1;
+}
+
+.sidenav .logout {
+  margin-bottom: 10px;
+}
+
+.sidenav-trigger {
+  display: block !important;
+}
+
+.sidenav i.material-icons {
+  color: #F2AA1F;
+  opacity: 0.5;
+}
+

@@ -1,4 +1,10 @@
-.nav-wrapper{
+.nav-wrapper {
   background-color: #114358;
+  padding: 0 10px;
+  position: relative;
 }
 
+.nav-wrapper .brand-logo {
+  font-size: 1.5em;
+  text-align: center;
+}

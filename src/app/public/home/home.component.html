@@ -1,9 +1,13 @@
+
+<link rel="stylesheet" href="home.component.css">
 <!-- src/app/home/home.component.html -->
+
 <div class="home-container">
-  <div class="banner">
-    <h1>Manizales Inteligente</h1>
-    <h2>Eventos</h2>
+
+  <div class="rounded-image-container">
+    <img src="https://uccf493ec69e720430fc02df524b.previews.dropboxusercontent.com/p/thumb/ACSX6-cLSy5DmJrijP8lgVftRDLJISTIqA77rT6p2x1CePdoMkiAUuHB9Yvo3z0RP2_giN8qJO1nE30_mh7PRWXdFEtddSRynNQgC-bNwWZz3gKthM2mYLw4fgdeMqCJ4b9jxttSEcW_f5b-zE7gPcn661E-vKQaJt51Gg7ItJLbDJVQbMMdHJQOQfN0q1KSL8vjdLh6zMORzRWaw9EbXgiolZT1O51aOiG84LVdq3ef8QZVh5a3c0GykTQ05E0h_mIgdkogsYDY_Xvr-I9R2cxBr12CErRk7VsOW2vU-MdTKQcA7TZSDu-91GNG-3l4JUj0SqQC_ALWZWP-jZs7QGsKhboLYzlDx4Bgb03KijPtiM54KGPMQPa7tHyzXWsv7rVQWKl9wWEPS4wy8iTQ0gRk/p.jpeg?is_prewarmed=true " alt="Imagen de ejemplo" class="rounded-image">
   </div>
+
   <div class="recent-events">
     <h3>Reciente</h3>
     <div class="carousel carousel-slider center">
@@ -28,15 +32,34 @@
       </div>
     </div>
   </div>
-  <div class="upcoming-events">
-    <h3>Próximos Eventos</h3>
-    <div class="event">
-      <span>30/5</span>
-      <p>Concierto manizales band</p>
+
+  <!-- Apartado de promoción de eventos -->
+  <div class="upcoming-events-container">
+    <div class="video-container">
+      <video controls autoplay muted loop>
+        <source src="https://v1.pinimg.com/videos/mc/720p/7f/29/be/7f29be283f9333ff082e420673385b30.mp4" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video.
+      </video>
     </div>
-    <div class="event">
-      <span>17/6</span>
-      <p>Diviértete con tu mascota</p>
-    </div>
+    <div class="upcoming-events">
+      <h3 class="upcoming-events-title">Próximos Eventos</h3>
+      <div class="event">
+        <div class="event-date-container">
+          <span class="event-date">30/5</span>
+        </div>
+        <p class="event-description">Concierto Manizales Band</p>
+      </div>
+      <div class="event">
+        <div class="event-date-container">
+          <span class="event-date">17/6</span>
+        </div>
+        <p class="event-description">Diviértete con tu mascota</p>
+      </div>
+      <div class="event">
+        <div class="event-date-container">
+          <span class="event-date">13/6</span>
+        </div>
+        <p class="event-description">Spring Fashion Preview</p>
+      </div>
   </div>
 </div>
