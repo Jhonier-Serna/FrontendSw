@@ -1,19 +1,20 @@
+
+function closeNav() {
+  var instance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+  instance.close();
+}
+
 function startSideMenu() {
-  document.addEventListener("DOMContentLoaded", function () {
-    var elems = document.querySelectorAll(".sidenav");
-    var instances = M.Sidenav.init(elems);
-    var closeButton = document.querySelector(".close-menu a");
-    if (closeButton) {
-      closeButton.addEventListener("click", function () {
-        var sidenavInstance = M.Sidenav.getInstance(
-          document.getElementById("mobile-demo")
-        );
-        sidenavInstance.close();
-      });
-    }
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {
+      edge: 'right'
+    });
   });
 }
+
 startSideMenu();
+closeNav();
 
 function handleSubmit(event) {
   event.preventDefault();
