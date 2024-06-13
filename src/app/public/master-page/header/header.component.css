@@ -8,3 +8,27 @@
   font-size: 1.5em;
   text-align: center;
 }
+
+.nav-wrapper .sidenav-trigger {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .nav-wrapper .sidenav-trigger {
+    display: block;
+  }
+}
+
+@media (max-width: 396px) {
+  .nav-wrapper .brand-logo {
+    font-size: 1.3em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 344px) {
+  .nav-wrapper .brand-logo {
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
