@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div
+          *ngFor="let e of eventList"
+          class="bg-segundoComplementario rounded-lg shadow-md p-4 flex items-center space-x-4"
+        >
+          <img
+            src="{{ e.archivos[0] }}"
+            alt="Event Image"
+            class="w-24 h-32 rounded-md"
+          />
+          <div class="flex-1 min-w-0 text-center">
+            <h3
+              class="text-lg font-semibold text-pincipal dark:text-white mb-1"
+            >
+              {{ e.name }}
+            </h3>
+            <div class="text-center">
+              <p class="text-sm text-colorOscuro">
+                {{ e.fecha }}
+              </p>
+              <p class="text-sm text-colorOscuro">
+                {{ e.HInicio }} - {{ e.HFin }}
+              </p>
+              <p class="text-sm text-colorOscuro">
+                {{ e.lugar }}
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <button class="bg-pincipal text-colorClaro px-3 py-1 rounded-md">
+              Editar
+            </button>
+            <button class="bg-pincipal text-colorClaro px-3 py-1 rounded-md">
+              Estadísticas
+            </button>
+            <button
+              class="bg-primerComplementario text-colorOscuro px-3 py-1 rounded-md"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
