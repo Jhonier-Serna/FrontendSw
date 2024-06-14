@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { CreateEventComponent } from './module/parameters/event/create-event/create-event.component';
 import { HomeComponent } from './public/home/home.component';
 import { RouteNotFoundComponent } from './public/errors/route-not-found/route-not-found.component';
 
