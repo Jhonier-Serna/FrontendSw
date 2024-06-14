@@ -7,23 +7,42 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './view-events.component.html',
   styleUrls: ['./view-events.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class ViewEventsComponent {
   currentYear = new Date().getFullYear();
   currentMonth = new Date().getMonth();
   today = new Date();
-  selectedDate: Date | null = new Date(); // Fecha actual como seleccionada por defecto
+  selectedDate: Date = new Date();
+  selectedCategory: string = '';
 
-  // Definición de las opciones de filtro
-  filters = ['Musica', 'Gastronomía', 'Deporte', 'Infantil', 'Familiar', 'Teatro', 'Aforo disponible'];
-  selectedFilter = '';
+  filters = [
+    'Musica',
+    'Gastronomía',
+    'Deporte',
+    'Infantil',
+    'Familiar',
+    'Teatro',
+    'Aforo disponible',
+  ];
   appliedFilters: string[] = [];
 
-  // Otros atributos...
-  monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  days = ["DO", "LU", "MA", "MI", "JU", "VI", "SA"];
-  calendar: { date: Date, currentMonth: boolean }[] = [];
+  monthNames = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
+  days = ['DO', 'LU', 'MA', 'MI', 'JU', 'VI', 'SA'];
+  calendar: { date: Date; currentMonth: boolean }[] = [];
 
   constructor() {
     this.generateCalendar();
@@ -34,25 +53,35 @@ export class ViewEventsComponent {
     let start = new Date(this.currentYear, this.currentMonth, 1);
     let end = new Date(this.currentYear, this.currentMonth + 1, 0);
 
-    // Fill in the days from the previous month
     let startDay = start.getDay();
     if (startDay > 0) {
       let prevMonthEnd = new Date(this.currentYear, this.currentMonth, 0);
       for (let i = startDay - 1; i >= 0; i--) {
-        this.calendar.unshift({ date: new Date(prevMonthEnd.getFullYear(), prevMonthEnd.getMonth(), prevMonthEnd.getDate() - i), currentMonth: false });
+        this.calendar.unshift({
+          date: new Date(
+            prevMonthEnd.getFullYear(),
+            prevMonthEnd.getMonth(),
+            prevMonthEnd.getDate() - i
+          ),
+          currentMonth: false,
+        });
       }
     }
 
-    // Fill in the current month
     for (let i = 1; i <= end.getDate(); i++) {
-      this.calendar.push({ date: new Date(this.currentYear, this.currentMonth, i), currentMonth: true });
+      this.calendar.push({
+        date: new Date(this.currentYear, this.currentMonth, i),
+        currentMonth: true,
+      });
     }
 
-    // Fill in the days from the next month
     let endDay = end.getDay();
     if (endDay < 6) {
       for (let i = 1; i <= 6 - endDay; i++) {
-        this.calendar.push({ date: new Date(this.currentYear, this.currentMonth + 1, i), currentMonth: false });
+        this.calendar.push({
+          date: new Date(this.currentYear, this.currentMonth + 1, i),
+          currentMonth: false,
+        });
       }
     }
   }
@@ -90,16 +119,21 @@ export class ViewEventsComponent {
   }
 
   applyFilters() {
-    console.log('Filters applied:', this.appliedFilters);
-    console.log('Selected date:', this.selectedDate);
+    const formattedDate = `${this.selectedDate.getDate()} ${
+      this.monthNames[this.selectedDate.getMonth()]
+    } ${this.selectedDate.getFullYear()}`;
+    console.log('Filters applied:', this.appliedFilters[0]);
+    console.log('Selected date:', formattedDate);
   }
 
   applyFilter() {
-    if (this.selectedFilter && !this.appliedFilters.includes(this.selectedFilter)) {
-      this.appliedFilters.push(this.selectedFilter);
+    if (
+      this.selectedCategory &&
+      !this.appliedFilters.includes(this.selectedCategory)
+    ) {
+      this.appliedFilters.push(this.selectedCategory);
     }
-    this.selectedFilter = '';
-    console.log('Selected filter:', this.selectedFilter);
+    this.selectedCategory = '';
   }
 
   onYearChange(event: Event) {
