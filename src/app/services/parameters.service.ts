@@ -7,6 +7,7 @@ import { EventModel } from '../models/event.model';
   providedIn: 'root',
 })
 export class ParametersService {
+
   private axiosInstance = axios.create({
     baseURL: 'https://dockerlogicanegocio.onrender.com',
   });
@@ -78,6 +79,22 @@ export class ParametersService {
         .then((response) => response.data)
         .catch((error) => {
           console.error(`Error fetching event with id ${id}:`, error);
+          throw error;
+        })
+    );
+  }
+
+  bookEvent(userId: string,eventId: any): Observable<any> {
+    const data = {
+      "event_id": eventId,
+      "user_id": userId
+    }
+    return from(
+      this.axiosInstance
+        .post<any>(`/resevations`, data)
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(`Error fetching event with id :`, error);
           throw error;
         })
     );
