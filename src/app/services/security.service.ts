@@ -7,23 +7,10 @@ import { UserModel } from '../models/user.model';
 })
 export class SecurityService {
   private axiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/',
-    // https://auth-service-class-3.onrender.com/
+    baseURL: 'https://auth-service-class-3.onrender.com/',
   });
 
   constructor() {}
-
-  // eventList(): Observable<UserModel[]> {
-  //   return from(
-  //     this.axiosInstance
-  //       .get<EventModel[]>('/events')
-  //       .then((response) => response.data)
-  //       .catch((error) => {
-  //         console.error('Error fetching event list:', error);
-  //         throw error;
-  //       })
-  //   );
-  // }
 
   login(user: UserModel): Observable<string> {
     return from(
