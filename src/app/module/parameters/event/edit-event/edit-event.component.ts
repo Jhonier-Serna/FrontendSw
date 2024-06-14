@@ -39,7 +39,7 @@ export class EditEventComponent implements OnInit {
   fGroup: FormGroup = new FormGroup({});
   selectedFiles: SelectedFile[] = [];
   uploadProgress$: Observable<number>[] = [];
-
+//oe 
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
