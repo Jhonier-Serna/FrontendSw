@@ -113,7 +113,7 @@ export class CreateEventComponent implements OnInit {
     if (this.fGroup.invalid) {
       console.log(this.fGroup);
       const dialogData = {
-        imageSrc: '...',
+        imageSrc: 'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/assets%2FboMCMJTh.png?alt=media&token=e8d41b61-9979-4cab-8c19-3c7cb489b72a',
         message: 'Error al crear el evento!',
         message2: 'Reintentar',
       };
@@ -127,7 +127,7 @@ export class CreateEventComponent implements OnInit {
       this.parametersService.saveEvent(formData).subscribe({
         next: (data: EventModel) => {
           const dialogData = {
-            imageSrc: '...',
+            imageSrc: 'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/assets%2Fr9BK4XzQ.png?alt=media&token=7f73b923-1f9f-46c2-8041-60dc35c2a5b2',
             message: '¡Evento creado exitosamente!',
             message2: 'Gracias!',
           };
@@ -136,7 +136,7 @@ export class CreateEventComponent implements OnInit {
         error: (err: any) => {
           console.error('Error uploading files: ');
           const dialogData = {
-            imageSrc: '...',
+            imageSrc: 'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/assets%2FboMCMJTh.png?alt=media&token=e8d41b61-9979-4cab-8c19-3c7cb489b72a',
             message: 'Error al subir los archivos!',
             message2: 'Reintentar',
           };
@@ -146,7 +146,7 @@ export class CreateEventComponent implements OnInit {
     } catch (error) {
       console.error('Error uploading files: ', error);
       const dialogData = {
-        imageSrc: '...',
+        imageSrc: 'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/assets%2FboMCMJTh.png?alt=media&token=e8d41b61-9979-4cab-8c19-3c7cb489b72a',
         message: 'Error al subir los archivos!',
         message2: 'Reintentar',
       };

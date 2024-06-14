@@ -22,5 +22,5 @@
     <li><a [routerLink]="['/parameters/list-event']"><i class="material-icons">event</i>Eventos</a></li>
     <li><a [routerLink]="['/security/eventsTable']"><i class="material-icons">settings</i>Administrar Eventos</a></li>
   </div>
-  <li class="logout"><a href="#"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+  <li (click)="exit()" class="logout"><a href="#"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
 </ul>
