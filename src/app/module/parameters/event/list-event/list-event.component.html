@@ -1,83 +1,57 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Dropdown Trigger -->
-      <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
-        >Drop Me!</a
-      >
-
-      <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider" tabindex="-1"></li>
-        <li><a href="#!">three</a></li>
-        <li>
-          <a href="#!"><i class="material-icons">view_module</i>four</a>
-        </li>
-        <li>
-          <a href="#!"><i class="material-icons">cloud</i>five</a>
-        </li>
-      </ul>
-      <div class="row">
-        <div *ngFor="let e of eventList; let i = index" class="col s12 m6 l4">
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="{{ e.fileLinks }}" />
+<div class="container">
+  <div class="row">
+    <div *ngFor="let e of eventList; let i = index" class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{ e.fileLinks }}" />
+        </div>
+        <div class="card-content">
+          <span class="card-title">{{ e.eventName }}</span>
+          <div class="chip flex-item">Fecha:{{ e.date }}</div>
+          <div class="chip flex-item">Lugar:{{ e.place }}</div>
+          <div class="flex">
+            <div class="chip flex-item">Hora inicio: {{ e.startTime }}</div>
+            <div class="chip flex-item">Hora fin: {{ e.endTime }}</div>
+          </div>
+          <div class="flex">
+            <div class="chip flex-item">Disponibles: {{ e.places }}</div>
+          </div>
+        </div>
+        <div class="card-action">
+          <a href="#" class="btn">Inscribirse</a>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <i class="small material-icons">do_disturb</i>
+          </span>
+          <div class="card-tabs">
+            <ul
+              [attr.id]="'tabs-swipe-demo-' + i"
+              class="tabs tabs-fixed-width tab-demo z-depth-1"
+            >
+              <li class="tab col s4">
+                <a class="active" [attr.href]="'#test-swipe-1-' + i">📷</a>
+              </li>
+              <li class="tab col s4">
+                <a [attr.href]="'#test-swipe-2-' + i">📷</a>
+              </li>
+              <li class="tab col s4">
+                <a [attr.href]="'#test-swipe-3-' + i">📚</a>
+              </li>
+            </ul>
+            <div [attr.id]="'test-swipe-1-' + i" class="col s12">
+              <img src="{{ e.fileLinks[1] }}" alt="" />
             </div>
-            <div class="card-content">
-              <span class="card-title">{{ e.eventName }}</span>
-              <div class="chip flex-item">Fecha:{{ e.date }}</div>
-              <div class="chip flex-item">Lugar:{{ e.place }}</div>
-              <div class="flex">
-                <div class="chip flex-item">Hora inicio: {{ e.startTime }}</div>
-                <div class="chip flex-item">Hora fin: {{ e.endTime }}</div>
-              </div>
-              <div class="flex">
-                <div class="chip flex-item">Disponibles: {{ e.places }}</div>
-              </div>
+            <div [attr.id]="'test-swipe-2-' + i" class="col s12">
+              <img src="{{ e.fileLinks[2] }}" alt="" />
+              <video src="{{ e.fileLinks[2] }}" controls></video>
             </div>
-            <div class="card-action">
-              <a href="#" class="btn">Inscribirse</a>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">
-                <i class="small material-icons">do_disturb</i>
-              </span>
-              <div class="card-tabs">
-                <ul
-                  [attr.id]="'tabs-swipe-demo-' + i"
-                  class="tabs tabs-fixed-width tab-demo z-depth-1"
-                >
-                  <li class="tab col s4">
-                    <a class="active" [attr.href]="'#test-swipe-1-' + i">📷</a>
-                  </li>
-                  <li class="tab col s4">
-                    <a [attr.href]="'#test-swipe-2-' + i">📷</a>
-                  </li>
-                  <li class="tab col s4">
-                    <a [attr.href]="'#test-swipe-3-' + i">📚</a>
-                  </li>
-                </ul>
-                <div [attr.id]="'test-swipe-1-' + i" class="col s12">
-                  <img src="{{ e.fileLinks[1] }}" alt="" />
-                </div>
-                <div [attr.id]="'test-swipe-2-' + i" class="col s12">
-                  <img src="{{ e.fileLinks[2] }}" alt="" />
-                  <video src="{{ e.fileLinks[2] }}" controls></video>
-                </div>
-                <div [attr.id]="'test-swipe-3-' + i" class="col s12">
-                  <p>{{ e.description }}</p>
-                </div>
-              </div>
+            <div [attr.id]="'test-swipe-3-' + i" class="col s12">
+              <p>{{ e.description }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
-</html>
+  </div>
+</div>

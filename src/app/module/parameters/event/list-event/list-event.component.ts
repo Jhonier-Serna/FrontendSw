@@ -21,6 +21,7 @@ export class ListEventComponent implements OnInit, AfterViewInit {
     this.parametersService.eventList().subscribe({
       next: (data) => {
         this.eventList = data;
+        setTimeout(() => this.initMaterializeComponents(), 0);
       },
       error: (err) => {
         console.error('Error fetching event list:', err);
@@ -29,9 +30,22 @@ export class ListEventComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    setTimeout(() => this.initMaterializeComponents(), 0);
+  }
+
+  private initMaterializeComponents() {
     const tabs = document.querySelectorAll('.tabs');
     tabs.forEach((tab: Element) => {
-      M.Tabs.init(tab);
+      if (M.Tabs.getInstance(tab) === undefined) {
+        M.Tabs.init(tab);
+      }
+    });
+
+    const dropdowns = document.querySelectorAll('.dropdown-trigger');
+    dropdowns.forEach((dropdown: Element) => {
+      if (M.Dropdown.getInstance(dropdown) === undefined) {
+        M.Dropdown.init(dropdown);
+      }
     });
   }
 }
