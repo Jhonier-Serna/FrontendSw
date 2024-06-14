@@ -31,4 +31,11 @@ export class SideMenuComponent {
     return this.fGroup.controls;
   }
 
+  exit(): void {
+    localStorage.removeItem('userData');
+    this.router.navigate(['/security/user-identification']);
+  }
+
 }
+
+
