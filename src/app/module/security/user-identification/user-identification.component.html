@@ -29,7 +29,7 @@
           <div class="text-input">
             <i class="ri-user-fill"></i>
             <input
-              formControlName="user"
+              formControlName="username"
               type="email"
               placeholder="Username"
               required
@@ -38,8 +38,8 @@
           <div
             class="login-Error"
             *ngIf="
-              getformGroup['user'].errors &&
-              (getformGroup['user'].dirty || getformGroup['user'].touched)
+              getformGroup['username'].errors &&
+              (getformGroup['username'].dirty || getformGroup['username'].touched)
             "
           >
             <strong

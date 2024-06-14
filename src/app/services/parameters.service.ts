@@ -71,4 +71,15 @@ export class ParametersService {
         })
     );
   }
+  findUser(id: string): Observable<any> {
+    return from(
+      this.axiosInstance
+        .get<any>(`/users/search/${id}`)
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(`Error fetching event with id ${id}:`, error);
+          throw error;
+        })
+    );
+  }
 }
