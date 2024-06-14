@@ -1,49 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modern Login Page | Prilist</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="user-identification.component.css">
-    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');</style>
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="user-identification.component.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+    </style>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="design">
-            <div class="pill-1 rotate-45"></div>
-            <div class="pill-2 rotate-45"></div>
-            <div class="pill-3 rotate-45"></div>
-            <div class="pill-4 rotate-45"></div>
-        </div>
-        <div class="login">
-          <h3 class="title">User Login</h3>
-          <form  id="loginForm" [formGroup]="fGroup" >
-              <div class="text-input">
-                  <i class="ri-user-fill"></i>
-                  <input formControlName="user" type="email" placeholder="Username" required>
-              </div>
-              <div class="login-Error"  *ngIf="getformGroup['user'].errors && (getformGroup['user'].dirty || getformGroup['user'].touched)">
-                <strong>Este campo es obligatorio y debe tener formato de correo electronico</strong>
-              </div>
-              <div class="text-input">
-                  <i class="ri-lock-fill"></i>
-                  <input formControlName="password" type="password" placeholder="Password" required>
-              </div>
-              <div class="login-Error"  *ngIf="getformGroup['password'].errors && (getformGroup['password'].dirty || getformGroup['password'].touched)">
-                <strong>Este campo es obligatorio</strong>
-              </div>
-              <button (click)="userIdentification()" type="submit" class="login-btn">LOGIN</button>
-          </form>
-          <a  href="/security/forgot-password"  class="forgot">Forgot Username/Password?</a>
-          <div class="create">
-              <a href="/security/register">Create Your Account</a>
-              <i class="ri-arrow-right-fill"></i>
+      <div class="design">
+        <div class="pill-1 rotate-45"></div>
+        <div class="pill-2 rotate-45"></div>
+        <div class="pill-3 rotate-45"></div>
+        <div class="pill-4 rotate-45"></div>
+      </div>
+      <div class="login">
+        <h3 class="title">User Login</h3>
+        <form id="loginForm" [formGroup]="fGroup">
+          <div class="text-input">
+            <i class="ri-user-fill"></i>
+            <input
+              formControlName="user"
+              type="email"
+              placeholder="Username"
+              required
+            />
           </div>
-        </div>
-    </div>
-</body>
+          <div
+            class="login-Error"
+            *ngIf="
+              getformGroup['user'].errors &&
+              (getformGroup['user'].dirty || getformGroup['user'].touched)
+            "
+          >
+            <strong
+              >Este campo es obligatorio y debe tener formato de correo
+              electronico</strong
+            >
+          </div>
+          <div class="text-input">
+            <i class="ri-lock-fill"></i>
+            <input
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div
+            class="login-Error"
+            *ngIf="
+              getformGroup['password'].errors &&
+              (getformGroup['password'].dirty ||
+                getformGroup['password'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio</strong>
+          </div>
+          <button
+            (click)="userIdentification()"
+            type="submit"
+            class="login-btn"
+          >
+            LOGIN
+          </button>
+        </form>
 
+        <a [routerLink]="['/security/forgot-password']" class="forgot"
+          >Forgot Username/Password?</a
+        >
+        <div class="create">
+          <a href="/security/register">Create Your Account</a>
+          <i class="ri-arrow-right-fill"></i>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
