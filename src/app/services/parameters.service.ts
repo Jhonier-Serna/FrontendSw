@@ -60,4 +60,15 @@ export class ParametersService {
         })
     );
   }
+  deleteEvent(id: string): Observable<EventModel> {
+    return from(
+      this.axiosInstance
+        .delete<EventModel>(`/events/${id}`)
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(`Error fetching event with id ${id}:`, error);
+          throw error;
+        })
+    );
+  }
 }
