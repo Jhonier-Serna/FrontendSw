@@ -6,6 +6,7 @@ import { TwoFaIdentificationComponent } from './two-fa-identification/two-fa-ide
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
 import { EventsTableComponent } from './events/events-table/events-table.component';
+import { ViewEventsComponent } from '../../public/view-events/view-events.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'eventsTable',
     component: EventsTableComponent,
   },
+  {
+    path: 'view-events',
+    component: ViewEventsComponent,
+  }
 ];
 
 @NgModule({
