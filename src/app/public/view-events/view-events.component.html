@@ -1,0 +1,59 @@
+<div class="title-div">
+    <a class="title">Ver Eventos</a>
+  </div>
+  
+  <div class="filter-container">
+    <div class="filter-controls">
+      <div class="filter-dropdown">
+        <select
+          id="category"
+          class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+        >
+          <option selected>Categoría</option>
+          <option value="Musica">Musica</option>
+          <option value="Gastronomia">Gastronomia</option>
+          <option value="Deporte">Deporte</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Familiar">Familiar</option>
+          <option value="Teatro">Teatro</option>
+          <option value="Aforo Disponible">Aforo Disponible</option>
+        </select>
+      </div>
+  
+      <div class="filter-bar">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Buscar..."
+            class="search-input"
+            id="search"
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button (click)="prevMonth()"><</button>
+        <span>{{ monthNames[currentMonth] }} {{ currentYear }}</span>
+        <button (click)="nextMonth()">></button>
+      </div>
+  
+      <div class="calendar-body">
+        <div class="calendar-day" *ngFor="let day of days">{{ day }}</div>
+        <div
+          class="calendar-date"
+          *ngFor="let item of calendar"
+          [class.current-month]="item.currentMonth"
+          [class.selected]="isSelected(item.date)"
+          [class.today]="isToday(item.date)"
+          (click)="selectDate(item.date)"
+        >
+          {{ item.date.getDate() }}
+        </div>
+      </div>
+  
+      <button (click)="applyFilters()" class="apply-button">Aplicar</button>
+    </div>
+  </div>
+  

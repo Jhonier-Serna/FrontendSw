@@ -1,0 +1,225 @@
+/* Title */
+.title-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(17, 67, 88, 0.9);
+  }
+  
+  .title {
+    font-size: 15px;
+    margin: 20px 0;
+    color: white;
+  }
+  
+  /* Filter Container */
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(17, 67, 88, 0.9);
+  }
+  
+  /* Filter Controls */
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Select Category */
+  .filter-dropdown {
+    margin-right: 20px;
+  }
+  
+  .filter-dropdown select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .filter-dropdown select:focus {
+    outline: none;
+    border-color: #f0ad4e;
+  }
+  
+  .filter-dropdown::after {
+    content: "\25BE"; /* Unicode character for down arrow */
+    font-size: 12px;
+    color: #555;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .filter-dropdown option {
+    background-color: #fff;
+    color: #555;
+  }
+  
+  .filter-dropdown option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Search Input */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-container {
+    border-radius: 20px;
+    background-color: whitesmoke;
+  }
+  
+  .search-input {
+    border-radius: 25px;
+    font-size: 12px;
+    width: 100%;
+  }
+  
+  /* Calendar */
+  .calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(17, 67, 88, 0.9);
+    margin-bottom: 20px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  .calendar-header button {
+    background-color: #f0ad4e;
+    border: none;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  .calendar-header span {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .calendar-day,
+  .calendar-date {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .calendar-date {
+    cursor: pointer;
+  }
+  
+  .calendar-date.current-month {
+    background-color: #f0f0f0;
+  }
+  
+  .calendar-date.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .calendar-date.today {
+    border: 2px solid black;
+  }
+  
+  .apply-button {
+    display: grid;
+    align-items: center;
+    background-color: #f0ad4e;
+    border: none;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* General Select and Button Styles */
+  select {
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  #category {
+    border-radius: 20px;
+    appearance: auto;
+  }
+  
+  button {
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #search {
+    border-bottom: none;
+    margin-left: 10px;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-right: 0;
+    outline: none;
+  }
+  
+  .search-container {
+    border-radius: 20px;
+    background-color: whitesmoke;
+  }
+  
+  .search-input {
+    border-radius: 25px;
+    font-size: 12px;
+    margin-right: 0;
+  }
+  
