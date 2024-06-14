@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ParametersService } from '../../services/parameters.service';
 
 @Component({
   selector: 'app-view-events',
@@ -44,7 +45,7 @@ export class ViewEventsComponent {
   days = ['DO', 'LU', 'MA', 'MI', 'JU', 'VI', 'SA'];
   calendar: { date: Date; currentMonth: boolean }[] = [];
 
-  constructor() {
+  constructor(private parametersService: ParametersService) {
     this.generateCalendar();
   }
 
@@ -124,6 +125,15 @@ export class ViewEventsComponent {
     } ${this.selectedDate.getFullYear()}`;
     console.log('Filters applied:', this.appliedFilters[0]);
     console.log('Selected date:', formattedDate);
+
+    // this.parametersService.searchList().subscribe({
+    //   next: (data) => {
+    //     this.eventList = data;
+    //     setTimeout(() => this.initMaterializeComponents(), 0);
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching event list:', err);
+    //   },
   }
 
   applyFilter() {
