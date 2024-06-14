@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Cards</title>
+  <title>Cards Layout</title>
   <link rel="stylesheet" href="delete-schedule-event.component.css">
 </head>
 <body>
-    <div class="container">
-        <div class="cards">
-            <div *ngFor="let event of eventList" class="card">
-                <div class="card-content">
-                    <img [src]="event.archivos[0]" alt="Event Image" class="card-image">
-                    <div class="card-details">
-                        <h2 class="card-title">{{ event.name }}</h2>
-                        <p class="card-date">{{ event.fecha }} {{ event.HInicio }} - {{ event.HFin }}</p>
-                        <p class="card-location">{{ event.lugar }}</p>
-                    </div>
-                    <button class="card-button">Cancelar reservación</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="cards">
+      <div *ngFor="let event of eventList" class="card">
+        <div class="card-content">
+          <img [src]="event.archivos[0]" alt="Event Image" class="card-image">
+          <div class="card-details">
+            <h2 class="card-title">{{ event.name }}</h2>
+            <p class="card-date">{{ event.fecha }} {{ event.HInicio }}</p>
+            <p class="card-location">{{ event.lugar }}</p>
+          </div>
+          <div class="card-buttons">
+            <button class="card-button rate-button">Calificar</button>
+            <button class="card-button cancel-button">Cancelar</button>
+          </div>
         </div>
+      </div>
+
+      <div *ngFor="let event of eventList" class="card">
+        <div class="card-content">
+          <img [src]="event.archivos[0]" alt="Event Image" class="card-image">
+          <div class="card-details">
+            <h2 class="card-title">{{ event.name }}</h2>
+            <p class="card-date">{{ event.fecha }} {{ event.HInicio }}</p>
+            <p class="card-location">{{ event.lugar }}</p>
+          </div>
+          <div class="card-buttons">
+            <button class="card-button rate-button">Calificar</button>
+            <button class="card-button cancel-button">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </body>
 </html>
