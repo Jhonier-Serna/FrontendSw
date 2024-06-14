@@ -8,7 +8,7 @@ import { EventModel } from '../models/event.model';
 })
 export class ParametersService {
   private axiosInstance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://dockerlogicanegocio.onrender.com',
   });
 
   constructor() {}
