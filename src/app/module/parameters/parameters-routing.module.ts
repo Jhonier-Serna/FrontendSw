@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'delete-client', component: DeleteClientComponent },
   { path: 'list-client', component: ListClientComponent },
   { path: 'create-event', component: CreateEventComponent },
-  { path: 'edit-event', component: EditEventComponent },
+  { path: 'edit-event/:id', component: EditEventComponent },
   { path: 'delete-event', component: DeleteEventComponent },
   { path: 'list-event', component: ListEventComponent },
 ];
