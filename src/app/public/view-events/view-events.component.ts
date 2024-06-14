@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-view-events',
   templateUrl: './view-events.component.html',
   styleUrls: ['./view-events.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class ViewEventsComponent {
   currentYear = new Date().getFullYear();
   currentMonth = new Date().getMonth();
   today = new Date();
   selectedDate: Date | null = new Date(); // Fecha actual como seleccionada por defecto
+  form: FormGroup = this.fb.group({
+    category: new FormControl(''),
+  });
 
   // Definición de las opciones de filtro
   filters = ['Musica', 'Gastronomía', 'Deporte', 'Infantil', 'Familiar', 'Teatro', 'Aforo disponible'];
@@ -25,7 +28,7 @@ export class ViewEventsComponent {
   days = ["DO", "LU", "MA", "MI", "JU", "VI", "SA"];
   calendar: { date: Date, currentMonth: boolean }[] = [];
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.generateCalendar();
   }
 
@@ -89,8 +92,9 @@ export class ViewEventsComponent {
     return date.toDateString() === this.today.toDateString();
   }
 
-  applyFilters() {
-    console.log('Filters applied:', this.appliedFilters);
+  onSubmit() {
+    console.log(this.form.controls['category'].value);
+    // console.log('Filters applied:', this.appliedFilters);
     console.log('Selected date:', this.selectedDate);
   }
 

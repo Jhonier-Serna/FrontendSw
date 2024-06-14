@@ -2,12 +2,14 @@
     <a class="title">Ver Eventos</a>
   </div>
   
-  <div class="filter-container">
+  <form [formGroup]="form" class="filter-container">
     <div class="filter-controls">
       <div class="filter-dropdown">
         <select
           id="category"
           class="bg-segundoComplementario text-zinc-700 text-sm rounded-lg block w-full p-2.5 dark:bg-zinc-100 dark:border-zinc-100 dark:placeholder-zinc-700 dark:text-zinc-700 dark:focus:ring-zinc-100 dark:focus:border-zinc-100"
+          formControlName="category"
+          name="category"
         >
           <option selected>Categoría</option>
           <option value="Musica">Musica</option>
@@ -53,7 +55,7 @@
         </div>
       </div>
   
-      <button (click)="applyFilters()" class="apply-button">Aplicar</button>
+      <button (click)="onSubmit()" class="apply-button" type="submit">Aplicar</button>
     </div>
-  </div>
+  </form>
   
