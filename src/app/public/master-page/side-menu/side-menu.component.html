@@ -16,9 +16,11 @@
   </li>
   <div class="menu-items">
     <li><a [routerLink]="['/home']" ><i class="material-icons">home</i>Menu</a></li>
+    <li><a [routerLink]="['parameters/create-event']"><i class="material-icons">edit</i>Editar Evento</a></li>
     <li><a [routerLink]="['/security/view-events']"><i class="material-icons">visibility</i>Buscar Eventos</a></li>
     <li><a [routerLink]="['/security/delete-schedule-event']"><i class="material-icons">event</i>Mis Eventos</a></li>
     <li><a [routerLink]="['/parameters/list-event']"><i class="material-icons">event</i>Eventos</a></li>
+    <li><a [routerLink]="['/security/eventsTable']"><i class="material-icons">settings</i>Administrar Eventos</a></li>
   </div>
   <li class="logout"><a href="#"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
 </ul>
