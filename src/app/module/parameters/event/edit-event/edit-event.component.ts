@@ -17,6 +17,9 @@ import {
   getDownloadURL,
   UploadTaskSnapshot,
 } from '@angular/fire/storage';
+import { EventModel } from '../../../../models/event.model';
+import { ParametersService } from '../../../../services/parameters.service';
+import { ActivatedRoute } from '@angular/router';
 
 interface SelectedFile {
   file: File;
@@ -33,25 +36,6 @@ interface SelectedFile {
   styleUrls: ['./edit-event.component.css'],
 })
 export class EditEventComponent implements OnInit {
-  event = {
-    id: 1,
-    name: 'Andres Cepeda 1',
-    categoria: 'Concierto',
-    fecha: '2024-06-12',
-    plazas: 500,
-    HInicio: '17:00',
-    HFin: '20:00',
-    lugar: 'Plaza de toros',
-    encargado: 'Alcaldía',
-    descripcion:
-      '¡Andrés Cepeda llega a Manizales con su gira "Nuestra Vida en Canciones"!Prepárate para una noche inolvidable llena de romanticismo y nostalgia con uno de los artistas más reconocidos de Colombia. Andrés Cepeda se presentará en la Plaza de Toros de Manizales el próximo 29 de noviembre de 2024 a las 8:30 p.m.En este concierto, Cepeda repasará sus más grandes éxitos, como "Lo Que Faltaba", "Mil Tángos", "A Favor de Ti", "La Ruta Púrpura" y "Yo Me Enamoré", entre muchas otras. Además, contará con la participación de invitados especiales.No te pierdas la oportunidad de vivir una experiencia única junto a Andrés Cepeda y sus canciones.',
-    archivos: [
-      'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/uploads%2Fcepeda1.jpg?alt=media&token=1f1e99d6-995d-4221-8b13-1208ac776ad2',
-      'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/uploads%2Fcepeda2.jpg?alt=media&token=42a5d583-d1d2-40b0-a14b-84b1b932e5e4',
-      'https://firebasestorage.googleapis.com/v0/b/manizalesinteligente.appspot.com/o/uploads%2Fcepeda.mp4?alt=media&token=1bfb7bbe-e929-433c-bd1b-b485c77c8777',
-    ],
-  };
-
   fGroup: FormGroup = new FormGroup({});
   selectedFiles: SelectedFile[] = [];
   uploadProgress$: Observable<number>[] = [];
@@ -59,12 +43,27 @@ export class EditEventComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private storage: Storage
+    private storage: Storage,
+    private parametersService: ParametersService,
+    private route: ActivatedRoute
   ) {}
+  event: EventModel = new EventModel();
+  eventId: string = '';
 
   ngOnInit() {
+    const idFromRoute = this.route.snapshot.paramMap.get('id');
+    this.eventId = idFromRoute !== null ? idFromRoute : '';
     this.FormBuild();
     this.loadEventData();
+    this.parametersService.eventbyId(this.eventId).subscribe({
+      next: (data) => {
+        this.event = data;
+        this.loadEventData();
+      },
+      error: (err) => {
+        console.error('Error fetching event:', err);
+      },
+    });
   }
 
   FormBuild() {
@@ -82,17 +81,19 @@ export class EditEventComponent implements OnInit {
   }
 
   loadEventData() {
-    this.fGroup.patchValue({
-      eventName: this.event.name,
-      category: this.event.categoria,
-      date: this.event.fecha,
-      places: this.event.plazas,
-      startTime: this.event.HInicio,
-      endTime: this.event.HFin,
-      place: this.event.lugar,
-      entityInCharge: this.event.encargado,
-      description: this.event.descripcion,
-    });
+    if (this.event) {
+      this.fGroup.patchValue({
+        eventName: this.event.eventName || '',
+        category: this.event.category || '',
+        date: this.event.date || '',
+        places: this.event.places || '',
+        startTime: this.event.startTime || '',
+        endTime: this.event.endTime || '',
+        place: this.event.place || '',
+        entityInCharge: this.event.entityInCharge || '',
+        description: this.event.description || '',
+      });
+    }
   }
 
   onFileSelected(event: any) {
@@ -165,20 +166,25 @@ export class EditEventComponent implements OnInit {
           next: (downloadURLs) => {
             formData = {
               ...this.fGroup.value,
-              fileLinks: downloadURLs.concat(this.event.archivos),
+              fileLinks: downloadURLs.concat(this.event.fileLinks),
             };
-            this.showSuccessDialog('¡Evento creado exitosamente!');
           },
         });
       } else {
         formData = {
           ...this.fGroup.value,
-          fileLinks: this.event.archivos,
+          fileLinks: this.event.fileLinks,
         };
-        this.showSuccessDialog('¡Evento creado exitosamente!');
-        console.log(formData);
-        return;
       }
+      this.parametersService.updateEvent(this.eventId, formData).subscribe({
+        next: (data: EventModel) => {
+          this.showSuccessDialog('¡Evento creado exitosamente!');
+        },
+        error: (err: any) => {
+          console.error('Error uploading files: ');
+          this.showErrorDialog('Error al subir los archivos!');
+        },
+      });
     } catch (error) {
       console.error('Error uploading files: ', error);
       this.showErrorDialog('Error al subir los archivos!');

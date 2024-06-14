@@ -4,22 +4,40 @@
   </head>
   <body>
     <div class="container">
+      <!-- Dropdown Trigger -->
+      <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
+        >Drop Me!</a
+      >
+
+      <!-- Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!">three</a></li>
+        <li>
+          <a href="#!"><i class="material-icons">view_module</i>four</a>
+        </li>
+        <li>
+          <a href="#!"><i class="material-icons">cloud</i>five</a>
+        </li>
+      </ul>
       <div class="row">
         <div *ngFor="let e of eventList; let i = index" class="col s12 m6 l4">
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="{{ e.archivos[0] }}" />
+              <img class="activator" src="{{ e.fileLinks }}" />
             </div>
             <div class="card-content">
-              <span class="card-title">{{ e.name }}</span>
-              <div class="chip flex-item">Fecha:{{ e.fecha }}</div>
-              <div class="chip flex-item">Lugar:{{ e.lugar }}</div>
+              <span class="card-title">{{ e.eventName }}</span>
+              <div class="chip flex-item">Fecha:{{ e.date }}</div>
+              <div class="chip flex-item">Lugar:{{ e.place }}</div>
               <div class="flex">
-                <div class="chip flex-item">Hora inicio: {{ e.HInicio }}</div>
-                <div class="chip flex-item">Hora fin: {{ e.HFin }}</div>
+                <div class="chip flex-item">Hora inicio: {{ e.startTime }}</div>
+                <div class="chip flex-item">Hora fin: {{ e.endTime }}</div>
               </div>
               <div class="flex">
-                <div class="chip flex-item">Disponibles: {{ e.plazas }}</div>
+                <div class="chip flex-item">Disponibles: {{ e.places }}</div>
               </div>
             </div>
             <div class="card-action">
@@ -45,14 +63,14 @@
                   </li>
                 </ul>
                 <div [attr.id]="'test-swipe-1-' + i" class="col s12">
-                  <img src="{{ e.archivos[1] }}" alt="" />
+                  <img src="{{ e.fileLinks[1] }}" alt="" />
                 </div>
                 <div [attr.id]="'test-swipe-2-' + i" class="col s12">
-                  <img src="{{ e.archivos[2] }}" alt="" />
-                  <video src="{{ e.archivos[2] }}" controls></video>
+                  <img src="{{ e.fileLinks[2] }}" alt="" />
+                  <video src="{{ e.fileLinks[2] }}" controls></video>
                 </div>
                 <div [attr.id]="'test-swipe-3-' + i" class="col s12">
-                  <p>{{ e.descripcion }}</p>
+                  <p>{{ e.description }}</p>
                 </div>
               </div>
             </div>

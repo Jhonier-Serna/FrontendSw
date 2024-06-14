@@ -17,6 +17,8 @@ import {
   getDownloadURL,
   UploadTaskSnapshot,
 } from '@angular/fire/storage';
+import { EventModel } from '../../../../models/event.model';
+import { ParametersService } from '../../../../services/parameters.service';
 
 interface SelectedFile {
   file: File;
@@ -39,9 +41,9 @@ export class CreateEventComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private storage: Storage
+    private storage: Storage,
+    private parametersService: ParametersService
   ) {}
-
   ngOnInit() {
     this.FormBuild();
   }
@@ -122,13 +124,25 @@ export class CreateEventComponent implements OnInit {
     try {
       const downloadURLs = await this.uploadFiles().toPromise();
       const formData = { ...this.fGroup.value, fileLinks: downloadURLs };
-      console.log(formData);
-      const dialogData = {
-        imageSrc: '...',
-        message: '¡Evento creado exitosamente!',
-        message2: 'Gracias!',
-      };
-      this.dialog.open(ModalComponent, { data: dialogData });
+      this.parametersService.saveEvent(formData).subscribe({
+        next: (data: EventModel) => {
+          const dialogData = {
+            imageSrc: '...',
+            message: '¡Evento creado exitosamente!',
+            message2: 'Gracias!',
+          };
+          this.dialog.open(ModalComponent, { data: dialogData });
+        },
+        error: (err: any) => {
+          console.error('Error uploading files: ');
+          const dialogData = {
+            imageSrc: '...',
+            message: 'Error al subir los archivos!',
+            message2: 'Reintentar',
+          };
+          this.dialog.open(ModalComponent, { data: dialogData });
+        },
+      });
     } catch (error) {
       console.error('Error uploading files: ', error);
       const dialogData = {
