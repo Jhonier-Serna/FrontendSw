@@ -35,9 +35,12 @@
             </div>
           </div>
           <div class="flex flex-col space-y-2">
-            <button class="bg-pincipal text-colorClaro px-3 py-1 rounded-md">
-              Editar
-            </button>
+            <a
+              [routerLink]="['/parameters/edit-event', e.id]"
+              class="bg-pincipal text-colorClaro px-3 py-1 rounded-md text-center"
+            >
+              Editar Evento
+            </a>
             <button class="bg-pincipal text-colorClaro px-3 py-1 rounded-md">
               Estadísticas
             </button>
